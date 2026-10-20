@@ -81,7 +81,7 @@ export default function LanguageSelector() {
 
       {isOpen && (
         <div className={`absolute top-full right-0 mt-2 w-48 rounded-xl shadow-xl overflow-hidden z-[100] animate-in fade-in zoom-in-95 duration-200 ${
-          isLight ? "bg-white border border-slate-100" : "bg-[#0f295e] border border-white/10 shadow-black/50"
+          isLight ? "bg-white border border-slate-200" : "bg-[#08080a] border border-white/15 shadow-black/80"
         }`}>
           <div className="py-1">
             {languages.map((lang) => (

@@ -1,29 +1,47 @@
+"use client";
+
 import { Clock, Mail } from "lucide-react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function TopBar() {
+  const { theme, mounted } = useTheme();
+  const isLight = mounted && theme === "light";
+
   return (
-    <div className="bg-[var(--kk-topbar-bg,#00A99D)] text-white text-xs py-2 hidden md:block border-b border-white/10 transition-colors duration-300">
+    <div 
+      className={`text-xs py-2 hidden md:block border-b transition-colors duration-300 ${
+        isLight
+          ? "bg-white text-slate-800 border-slate-200"
+          : "bg-black text-white border-white/10"
+      }`}
+    >
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 flex justify-between items-center">
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1.5 font-medium">
-            <Clock className="w-3.5 h-3.5 text-white drop-shadow-sm" /> 
+            <Clock className="w-3.5 h-3.5 text-kk-teal shrink-0" /> 
             <span>24/7 Emergency Service</span>
           </span>
           <span className="flex items-center gap-1.5 font-medium">
-            <Mail className="w-3.5 h-3.5 text-white drop-shadow-sm" /> 
-            <span>support@kkmulti.com</span>
+            <Mail className="w-3.5 h-3.5 text-kk-teal shrink-0" /> 
+            <span>support@dialforservices.com</span>
           </span>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] text-white/80 font-medium">Follow Us:</span>
+            <span className={`text-[11px] font-medium ${isLight ? "text-slate-500" : "text-white/80"}`}>
+              Follow Us:
+            </span>
             <div className="flex items-center gap-1.5">
               <a 
                 href="https://facebook.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-kk-blue flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]" 
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-110 ${
+                  isLight 
+                    ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                    : "bg-white/15 hover:bg-kk-teal text-white hover:text-white"
+                }`}
                 aria-label="Facebook"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -34,7 +52,11 @@ export default function TopBar() {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-kk-blue flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]" 
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-110 ${
+                  isLight 
+                    ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                    : "bg-white/15 hover:bg-kk-teal text-white hover:text-white"
+                }`}
                 aria-label="Instagram"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -45,7 +67,11 @@ export default function TopBar() {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-kk-blue flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]" 
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-110 ${
+                  isLight 
+                    ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                    : "bg-white/15 hover:bg-kk-teal text-white hover:text-white"
+                }`}
                 aria-label="LinkedIn"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -56,7 +82,11 @@ export default function TopBar() {
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white text-white hover:text-kk-blue flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]" 
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 shadow-xs hover:scale-110 ${
+                  isLight 
+                    ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                    : "bg-white/15 hover:bg-kk-teal text-white hover:text-white"
+                }`}
                 aria-label="YouTube"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -65,7 +95,7 @@ export default function TopBar() {
               </a>
             </div>
           </div>
-          <div className="h-3.5 w-px bg-white/20" />
+          <div className={`h-3.5 w-px ${isLight ? "bg-slate-300" : "bg-white/20"}`} />
           <div className="flex items-center gap-2">
             <ThemeSwitcher variant="topbar" />
           </div>

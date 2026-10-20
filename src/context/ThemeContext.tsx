@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = "current" | "light";
+export type Theme = "light" | "dark" | "current";
 
 interface ThemeContextType {
   theme: Theme;
@@ -12,29 +12,30 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "current",
+  theme: "dark",
   toggleTheme: () => {},
   setTheme: () => {},
   mounted: false,
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("current");
+  const [theme, setThemeState] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("kk_theme");
-      if (saved === "light" || saved === "current") {
-        setThemeState(saved as Theme);
-        document.documentElement.setAttribute("data-theme", saved);
-      } else if (saved === "logo") {
-        // Migrate old logo theme to light theme
+      const saved = localStorage.getItem("dfs_theme") || localStorage.getItem("kk_theme");
+      if (saved === "light" || saved === "logo") {
         setThemeState("light");
-        localStorage.setItem("kk_theme", "light");
         document.documentElement.setAttribute("data-theme", "light");
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
       } else {
-        document.documentElement.setAttribute("data-theme", "current");
+        // Default to dark mode (black background)
+        setThemeState("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
       }
     } catch (e) {
       console.error(e);
@@ -43,17 +44,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setTheme = (newTheme: Theme) => {
-    setThemeState(newTheme);
+    const canonicalTheme = newTheme === "dark" || newTheme === "current" ? "dark" : "light";
+    setThemeState(canonicalTheme);
     try {
-      localStorage.setItem("kk_theme", newTheme);
-      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("dfs_theme", canonicalTheme);
+      document.documentElement.setAttribute("data-theme", canonicalTheme);
+      if (canonicalTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      }
     } catch (e) {
       console.error(e);
     }
   };
 
   const toggleTheme = () => {
-    const nextTheme: Theme = theme === "current" ? "light" : "current";
+    const nextTheme: Theme = theme === "dark" || theme === "current" ? "light" : "dark";
     setTheme(nextTheme);
   };
 

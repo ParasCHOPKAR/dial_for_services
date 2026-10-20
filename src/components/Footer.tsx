@@ -4,13 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, ArrowRight, MapPin, ArrowUp } from "lucide-react";
 import { useBookingModal } from "@/context/BookingModalContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Footer() {
   const { openBookingModal } = useBookingModal();
+  const { theme, mounted } = useTheme();
+  const isLight = mounted && theme === "light";
+
   return (
     <>
       <footer 
-        className="pt-14 sm:pt-20 pb-8 sm:pb-10 border-t border-slate-200 bg-cover bg-center bg-no-repeat relative bg-[url('/images/footer_img_background.png')] md:bg-[url('/images/footer-01.png')]"
+        className={`pt-14 sm:pt-20 pb-8 sm:pb-10 border-t transition-colors duration-300 relative ${
+          isLight 
+            ? "bg-white border-slate-200 text-slate-700" 
+            : "bg-black border-white/10 text-slate-300"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-8 mb-12 sm:mb-16">
@@ -18,20 +26,37 @@ export default function Footer() {
             {/* Column 1: Brand & Contact */}
             <div className="space-y-5 sm:space-y-6">
               <Link href="/" className="inline-block">
-                <Image src="/images/logo_Light_01.png" alt="KK Multi Services Logo" width={240} height={70} className="h-10 sm:h-12 md:h-14 w-auto object-contain" priority />
+                <Image 
+                  src="/new_imgs/logo.png" 
+                  alt="Dial For Services Logo" 
+                  width={260} 
+                  height={80} 
+                  className={`h-10 sm:h-12 md:h-14 w-auto object-contain ${!isLight ? 'drop-shadow-[0_2px_14px_rgba(0,196,204,0.35)]' : ''}`} 
+                  priority 
+                />
               </Link>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className={`text-sm leading-relaxed ${isLight ? "text-slate-600" : "text-slate-400"}`}>
                 Your trusted partner for professional home appliance repair services. Fast, efficient, and reliable solutions across the region.
               </p>
               
               <div className="space-y-3 pt-1">
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-kk-red mt-0.5 shrink-0" />
-                  <a href="tel:+917823038645" className="text-slate-600 hover:text-kk-red text-sm font-bold">+91 78230 38645</a>
+                  <Phone className="w-4 h-4 text-[#16a34a] mt-0.5 shrink-0" />
+                  <a 
+                    href="tel:+917823038645" 
+                    className={`text-sm font-bold transition-colors ${isLight ? "text-slate-800 hover:text-kk-teal" : "text-white hover:text-cyan-300"}`}
+                  >
+                    +91 78230 38645
+                  </a>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-kk-blue mt-0.5 shrink-0" />
-                  <a href="mailto:support@kkmulti.com" className="text-slate-600 hover:text-kk-blue text-sm font-bold break-all">support@kkmulti.com</a>
+                  <Mail className="w-4 h-4 text-kk-teal mt-0.5 shrink-0" />
+                  <a 
+                    href="mailto:support@dialforservices.com" 
+                    className={`text-sm font-bold break-all transition-colors ${isLight ? "text-slate-800 hover:text-kk-teal" : "text-white hover:text-cyan-300"}`}
+                  >
+                    support@dialforservices.com
+                  </a>
                 </div>
               </div>
 
@@ -41,7 +66,11 @@ export default function Footer() {
                   href="https://facebook.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#1877F2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200" 
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    isLight 
+                      ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                      : "bg-white/10 hover:bg-kk-teal text-slate-300 hover:text-white"
+                  }`} 
                   aria-label="Facebook"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -52,7 +81,11 @@ export default function Footer() {
                   href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#E4405F] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200" 
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    isLight 
+                      ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                      : "bg-white/10 hover:bg-kk-teal text-slate-300 hover:text-white"
+                  }`} 
                   aria-label="Instagram"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -63,7 +96,11 @@ export default function Footer() {
                   href="https://linkedin.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200" 
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    isLight 
+                      ? "bg-slate-100 hover:bg-kk-teal text-slate-600 hover:text-white" 
+                      : "bg-white/10 hover:bg-kk-teal text-slate-300 hover:text-white"
+                  }`} 
                   aria-label="LinkedIn"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -75,47 +112,87 @@ export default function Footer() {
 
             {/* Column 2: Services & Links */}
             <div>
-              <h4 className="text-slate-900 font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm">Services & Links</h4>
+              <h4 className={`font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm ${isLight ? "text-slate-900" : "text-white"}`}>
+                Services & Links
+              </h4>
               <ul className="space-y-2.5 sm:space-y-3">
-                <li><Link href="/services" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-red shrink-0" /> Refrigerator Repair</Link></li>
-                <li><Link href="/services" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-red shrink-0" /> AC Repair & Service</Link></li>
-                <li><Link href="/services" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-red shrink-0" /> Washing Machine Repair</Link></li>
-                <li><Link href="/amc" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-red shrink-0" /> AMC / CMC Contracts</Link></li>
-                <li className="pt-1"><Link href="/about" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> About Us</Link></li>
-                <li><Link href="/blog" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Appliance Blog</Link></li>
-                <li><Link href="/contact" className="text-slate-600 hover:text-kk-blue font-medium transition-colors text-sm flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Contact Us</Link></li>
+                <li>
+                  <Link href="/services#refrigerator" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Refrigerator Repair
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services#ac" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> AC Repair & Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services#washing-machine" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Washing Machine Repair
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/amc" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#16a34a] shrink-0" /> AMC / CMC Contracts
+                  </Link>
+                </li>
+                <li className="pt-1">
+                  <Link href="/about" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Appliance Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className={`font-medium transition-colors text-sm flex items-center gap-2 ${isLight ? "text-slate-600 hover:text-kk-teal" : "text-slate-300 hover:text-white"}`}>
+                    <ArrowRight className="w-3.5 h-3.5 text-kk-teal shrink-0" /> Contact Us
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Column 3: Customer Reviews */}
             <div>
-              <h4 className="text-slate-900 font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm">Customer Reviews</h4>
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm relative mt-2">
-                <div className="absolute -top-3.5 -right-2 w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full shadow-md flex items-center justify-center border border-slate-100">
+              <h4 className={`font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm ${isLight ? "text-slate-900" : "text-white"}`}>
+                Customer Reviews
+              </h4>
+              <div className={`p-4 sm:p-5 rounded-xl border relative mt-2 transition-colors ${
+                isLight ? "bg-white border-slate-200 shadow-xs" : "bg-[#0b0c10] border-white/10"
+              }`}>
+                <div className={`absolute -top-3.5 -right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full shadow-md flex items-center justify-center border ${
+                  isLight ? "bg-white border-slate-100" : "bg-[#14151b] border-white/10"
+                }`}>
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#4285F4" d="M23.64 12.2c0-.79-.07-1.54-.19-2.2H12v4.16h6.51c-.28 1.39-1.04 2.56-2.22 3.36l3.57 2.77C21.95 18.36 23.64 15.61 23.64 12.2z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#34A853" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                 </div>
-                <div className="flex items-center gap-1 text-yellow-400 mb-2 sm:mb-3">
+                <div className="flex items-center gap-1 text-emerald-500 mb-2 sm:mb-3">
                   {[1,2,3,4,5].map(i => <svg key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>)}
-                  <span className="text-slate-800 text-xs font-bold ml-1">4.9/5</span>
+                  <span className={`text-xs font-bold ml-1 ${isLight ? "text-slate-800" : "text-white"}`}>4.9/5</span>
                 </div>
-                <p className="text-slate-600 text-xs italic mb-2.5 sm:mb-3 leading-relaxed">"Excellent service! The technician arrived on time and fixed our AC within an hour. Highly recommended."</p>
-                <div className="text-slate-400 font-bold text-[10px] uppercase tracking-wider">- Rahul Sharma</div>
+                <p className={`text-xs italic mb-2.5 sm:mb-3 leading-relaxed ${isLight ? "text-slate-600" : "text-slate-300"}`}>
+                  &quot;Excellent service! The technician arrived on time and fixed our AC within an hour. Highly recommended.&quot;
+                </p>
+                <div className="text-kk-teal font-bold text-[10px] uppercase tracking-wider">- Rahul Sharma</div>
               </div>
             </div>
 
             {/* Column 4: Google Map & Our Address */}
             <div>
-              <h4 className="text-slate-900 font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm">Our Address</h4>
-              <div className="w-full h-32 sm:h-36 bg-slate-200 rounded-xl overflow-hidden shadow-inner relative border border-slate-200">
+              <h4 className={`font-extrabold mb-4 sm:mb-6 uppercase tracking-wider text-xs sm:text-sm ${isLight ? "text-slate-900" : "text-white"}`}>
+                Our Address
+              </h4>
+              <div className={`w-full h-32 sm:h-36 rounded-xl overflow-hidden shadow-inner relative border ${isLight ? "border-slate-200 bg-slate-100" : "border-white/10 bg-black"}`}>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0921705646447!2d73.7721601!3d18.5698829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf1ba5c42d25%3A0xae3383c823833690!2sKK%20Multi%20Services!5e0!3m2!1sen!2sin!4v1789969080377!5m2!1sen!2sin" width="100%" height="100%" style={{border:0}} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Map Location"></iframe>
               </div>
-              <div className="mt-3 sm:mt-4 flex items-start gap-2 text-slate-600 text-xs font-medium leading-relaxed">
+              <div className={`mt-3 sm:mt-4 flex items-start gap-2 text-xs font-medium leading-relaxed ${isLight ? "text-slate-600" : "text-slate-300"}`}>
                 <MapPin className="w-4 h-4 shrink-0 text-kk-teal mt-0.5" />
                 <div className="space-y-0.5">
-                  <div className="text-[10px] text-slate-400 font-mono tracking-tight">
+                  <div className="text-[10px] text-kk-teal/80 font-mono tracking-tight">
                     N 186 25°S8.229534°E 73°47&apos;40.80768&quot;
                   </div>
-                  <div className="text-slate-600 text-xs">
+                  <div>
                     Unit 04, Heavenly Homes, Next To Cummins India and IRIS High Street, Balewadi, Pune- 411045, Maharashtra, India.
                   </div>
                 </div>
@@ -124,41 +201,43 @@ export default function Footer() {
 
           </div>
 
-          <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-slate-500 font-medium text-center md:text-left">
-            <p>&copy; {new Date().getFullYear()} KK Multi Services. All Rights Reserved.</p>
+          <div className={`border-t pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm font-medium text-center md:text-left ${
+            isLight ? "border-slate-200 text-slate-500" : "border-white/10 text-slate-400"
+          }`}>
+            <p>&copy; {new Date().getFullYear()} Dial For Services. All Rights Reserved.</p>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-kk-blue transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-kk-blue transition-colors">Terms & Conditions</a>
+              <a href="#" className="hover:text-kk-teal transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-kk-teal transition-colors">Terms & Conditions</a>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Floating Action Buttons - Compact & Touch-optimized on Mobile */}
+      {/* Floating Action Buttons */}
       <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-[50] flex flex-col gap-2.5 sm:gap-4">
-        {/* Call Button */}
+        {/* Call Button - Logo Sapphire Blue */}
         <a 
           href="tel:+917823038645" 
-          className="w-11 h-11 sm:w-14 sm:h-14 bg-kk-blue hover:bg-kk-blue-light text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(11,28,61,0.35)] hover:scale-110 active:scale-90 transition-all duration-300 relative group"
+          className="w-11 h-11 sm:w-14 sm:h-14 bg-[#004cb8] hover:bg-[#0066cc] text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(0,76,184,0.35)] hover:scale-110 active:scale-90 transition-all duration-300 relative group"
           aria-label="Call Us Now"
         >
           <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
+          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
             Call Us Now
           </span>
         </a>
         
-        {/* WhatsApp Button */}
+        {/* WhatsApp Button - Logo Lime / Emerald Green */}
         <button 
           type="button"
           onClick={() => openBookingModal()}
-          className="w-11 h-11 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(37,211,102,0.35)] hover:scale-110 active:scale-90 transition-all duration-300 relative group cursor-pointer"
+          className="w-11 h-11 sm:w-14 sm:h-14 bg-[#16a34a] hover:bg-[#22c55e] text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(22,163,74,0.35)] hover:scale-110 active:scale-90 transition-all duration-300 relative group cursor-pointer"
           aria-label="WhatsApp Booking"
         >
           <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.57c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
           </svg>
-          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
+          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
             WhatsApp Booking
           </span>
         </button>
@@ -166,11 +245,15 @@ export default function Footer() {
         {/* Scroll to Top Button */}
         <a 
           href="#top" 
-          className="w-11 h-11 sm:w-14 sm:h-14 bg-white border-[1.5px] border-slate-200 hover:border-kk-teal text-slate-600 hover:text-kk-teal rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:scale-110 active:scale-90 transition-all duration-300 relative group"
+          className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 relative group ${
+            isLight 
+              ? "bg-white border-[1.5px] border-slate-200 hover:border-kk-teal text-slate-700 hover:text-kk-teal shadow-[0_8px_20px_rgba(0,0,0,0.08)]" 
+              : "bg-black border-[1.5px] border-white/20 hover:border-cyan-400 text-white hover:text-cyan-400 shadow-[0_8px_20px_rgba(0,0,0,0.8)]"
+          }`}
           aria-label="Back to Top"
         >
           <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
-          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
+          <span className="hidden sm:block absolute right-16 bg-white text-slate-800 text-xs font-bold px-3 py-2 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-slate-100 translate-x-4 group-hover:translate-x-0">
             Back to Top
           </span>
         </a>

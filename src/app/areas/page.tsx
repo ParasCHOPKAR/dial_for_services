@@ -956,7 +956,7 @@ export default function AreasPage() {
   ];
 
   return (
-    <main id="top" className="min-h-screen font-sans bg-slate-50 text-slate-900 flex flex-col">
+    <main id="top" className="min-h-screen font-sans bg-white dark:bg-black text-slate-900 dark:text-white flex flex-col">
       {/* Top Header Bar */}
       <TopBar />
 
@@ -971,7 +971,7 @@ export default function AreasPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/area/hero_img_04.png"
-            alt="KK Multi Services Pune Coverage Map"
+            alt="Dial For Services Pune Coverage Map"
             fill
             priority
             sizes="100vw"
@@ -1068,14 +1068,14 @@ export default function AreasPage() {
               </div>
             </div>
 
-            {/* Right Column: 7 Cols Spacer so the background map & KK service van shine through unobstructed */}
+            {/* Right Column: 7 Cols Spacer so the background map & Dial For Services van shine through unobstructed */}
             <div className="lg:col-span-7 hidden lg:block pointer-events-none" />
           </div>
         </div>
       </section>
 
       {/* Zone Filters Bar */}
-      <section className="py-4 sm:py-5 bg-white border-b border-slate-200 sticky top-[68px] md:top-[76px] z-40 shadow-sm backdrop-blur-md bg-white/95">
+      <section className="py-4 sm:py-5 bg-white/95 dark:bg-black/95 border-b border-slate-200 dark:border-white/10 sticky top-[68px] md:top-[76px] z-40 shadow-sm backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
 
@@ -1118,7 +1118,7 @@ export default function AreasPage() {
             <MapPin className="w-12 h-12 text-slate-300 mx-auto mb-3" />
             <h3 className="text-lg font-bold text-slate-800 mb-1">No exact locality match for "{searchQuery}"</h3>
             <p className="text-xs text-slate-500 mb-5 leading-relaxed">
-              Don't worry! KK Multi Services covers all gated societies and townships across Pune, PCMC &amp; PMRDA limits. Call our direct dispatch desk for express assignment.
+              Don't worry! Dial For Services covers all gated societies and townships across Pune, PCMC &amp; PMRDA limits. Call our direct dispatch desk for express assignment.
             </p>
             <a
               href="tel:+917823038645"
@@ -1208,7 +1208,7 @@ export default function AreasPage() {
       </section>
 
       {/* Coverage Promise Banner */}
-      <section className="py-12 bg-white border-y border-slate-200">
+      <section className="py-12 bg-white dark:bg-black border-y border-slate-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex items-start gap-4">

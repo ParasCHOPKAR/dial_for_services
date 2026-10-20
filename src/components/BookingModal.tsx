@@ -18,6 +18,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import type { AreaBookingData } from "@/context/BookingModalContext";
+import { useTheme } from "@/context/ThemeContext";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -72,6 +73,8 @@ export default function BookingModal({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingId, setBookingId] = useState("");
   const [waUrl, setWaUrl] = useState("");
+  const { theme, mounted } = useTheme();
+  const isLight = mounted && theme === "light";
 
   // Sync service if initialService changes
   useEffect(() => {
@@ -169,12 +172,12 @@ export default function BookingModal({
 
     setIsSubmitting(true);
 
-    const generatedId = `KK-${Math.floor(100000 + Math.random() * 900000)}`;
+    const generatedId = `DFS-${Math.floor(100000 + Math.random() * 900000)}`;
     setBookingId(generatedId);
 
     // Format WhatsApp pre-filled text with complete area details
     const lines = [
-      `*New Service Booking - KK Multi Services*`,
+      `*New Service Booking - Dial For Services*`,
       ``,
       `👤 *Customer Name:* ${trimmedName}`,
       `📞 *Contact Number:* ${phone.trim()}`,
@@ -254,13 +257,15 @@ export default function BookingModal({
     >
       {/* Modal Card */}
       <div 
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all animate-hero-fade-up max-h-[92vh] flex flex-col"
+        className={`relative w-full max-w-lg rounded-3xl shadow-2xl border overflow-hidden transform transition-all animate-hero-fade-up max-h-[92vh] flex flex-col ${
+          isLight ? "bg-white border-slate-200 text-slate-900" : "bg-[#090a0d] border-white/15 text-white"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-kk-blue via-[#0d234d] to-kk-dark text-white px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between shrink-0">
+        <div className="relative bg-gradient-to-r from-[#002244] via-[#003875] to-[#001733] text-white px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-kk-red flex items-center justify-center text-white shadow-md shadow-kk-red/30 shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-kk-teal flex items-center justify-center text-white shadow-md shadow-kk-teal/30 shrink-0">
               <Wrench className="w-5 h-5" />
             </div>
             <div>
@@ -295,35 +300,37 @@ export default function BookingModal({
                 <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-2">
                   Reference: #{bookingId}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-1.5">
+                <h3 className={`text-xl sm:text-2xl font-black mb-1.5 ${isLight ? "text-slate-900" : "text-white"}`}>
                   Booking Ready on WhatsApp!
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
-                  Thank you, <strong className="text-slate-900">{name || "Valued Customer"}</strong>. Your booking details were prepared for WhatsApp.
+                <p className={`text-xs sm:text-sm max-w-sm mx-auto leading-relaxed ${isLight ? "text-slate-600" : "text-slate-300"}`}>
+                  Thank you, <strong className={isLight ? "text-slate-900" : "text-white"}>{name || "Valued Customer"}</strong>. Your booking details were prepared for WhatsApp.
                 </p>
               </div>
 
               {/* Summary Card */}
-              <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 text-left text-xs sm:text-sm space-y-2">
-                <div className="flex justify-between items-center text-slate-600">
+              <div className={`border rounded-2xl p-4 text-left text-xs sm:text-sm space-y-2 ${
+                isLight ? "bg-slate-50 border-slate-200/80 text-slate-600" : "bg-[#111116] border-white/10 text-slate-300"
+              }`}>
+                <div className="flex justify-between items-center">
                   <span>Service:</span>
-                  <span className="font-bold text-slate-900">{service}</span>
+                  <span className={`font-bold ${isLight ? "text-slate-900" : "text-white"}`}>{service}</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-600">
+                <div className="flex justify-between items-center">
                   <span>Locality:</span>
-                  <span className="font-bold text-slate-900">
+                  <span className={`font-bold ${isLight ? "text-slate-900" : "text-white"}`}>
                     {area} {areaDetails?.pincode ? `(PIN: ${areaDetails.pincode})` : ""}
                   </span>
                 </div>
                 {areaDetails?.landmarks && (
-                  <div className="flex justify-between items-start text-slate-600 text-[11px] gap-2">
+                  <div className="flex justify-between items-start text-[11px] gap-2">
                     <span className="shrink-0">Landmark:</span>
-                    <span className="font-medium text-slate-800 text-right">{areaDetails.landmarks}</span>
+                    <span className={`font-medium text-right ${isLight ? "text-slate-800" : "text-slate-200"}`}>{areaDetails.landmarks}</span>
                   </div>
                 )}
-                <div className="flex justify-between items-center text-slate-600">
+                <div className="flex justify-between items-center">
                   <span>Contact:</span>
-                  <span className="font-bold text-slate-900">{phone}</span>
+                  <span className={`font-bold ${isLight ? "text-slate-900" : "text-white"}`}>{phone}</span>
                 </div>
               </div>
 
@@ -333,7 +340,7 @@ export default function BookingModal({
                   href={waUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3.5 px-5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 transition-all active:scale-95"
+                  className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-kk-teal to-[#16a34a] hover:opacity-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 transition-all active:scale-95"
                 >
                   <MessageCircle className="w-5 h-5 fill-current" />
                   <span>Open WhatsApp to Send Message</span>
@@ -342,7 +349,9 @@ export default function BookingModal({
               )}
 
               {/* Status Note */}
-              <div className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-700 bg-slate-100 p-3 rounded-xl border border-slate-200">
+              <div className={`flex items-center justify-center gap-2 text-xs font-semibold p-3 rounded-xl border ${
+                isLight ? "bg-slate-100 text-slate-700 border-slate-200" : "bg-[#111116] text-slate-200 border-white/10"
+              }`}>
                 <Clock className="w-4 h-4 text-kk-teal shrink-0" />
                 <span>Our technician coordinator will respond to your WhatsApp message immediately!</span>
               </div>
@@ -350,14 +359,18 @@ export default function BookingModal({
               <div className="pt-2 flex flex-col sm:flex-row gap-2.5 justify-center">
                 <a
                   href="tel:+917823038645"
-                  className="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors"
+                  className={`px-5 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors border ${
+                    isLight 
+                      ? "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200" 
+                      : "bg-[#111116] hover:bg-[#181820] text-white border-white/10"
+                  }`}
                 >
-                  <Phone className="w-4 h-4 text-kk-red" /> Direct Call: +91 78230 38645
+                  <Phone className="w-4 h-4 text-kk-teal" /> Direct Call: +91 78230 38645
                 </a>
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm transition-colors"
+                  className="px-6 py-3 rounded-xl bg-[#002244] hover:bg-[#003366] text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer"
                 >
                   Close
                 </button>
@@ -367,39 +380,43 @@ export default function BookingModal({
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               {/* Complete Area Details Card (from clicked area card) */}
               {areaDetails && (
-                <div className="bg-gradient-to-br from-cyan-50/90 via-sky-50/80 to-blue-50/90 border border-kk-teal/30 rounded-2xl p-3.5 sm:p-4 text-left shadow-xs">
+                <div className={`border rounded-2xl p-3.5 sm:p-4 text-left shadow-xs ${
+                  isLight ? "bg-cyan-50/70 border-kk-teal/30" : "bg-[#111116] border-kk-teal/40"
+                }`}>
                   <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-kk-blue text-white">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-[#002244] text-white">
                         {areaDetails.zoneLabel || "Serviced Area"}
                       </span>
                       {areaDetails.subZone && (
-                        <span className="text-[10px] font-bold text-slate-600 bg-white/90 border border-slate-200 px-2 py-0.5 rounded-md">
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${
+                          isLight ? "bg-white/90 text-slate-600 border-slate-200" : "bg-black text-slate-300 border-white/10"
+                        }`}>
                           {areaDetails.subZone}
                         </span>
                       )}
                     </div>
                     {areaDetails.responseTime && (
-                      <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-100/90 px-2.5 py-0.5 rounded-full shrink-0">
-                        <Clock className="w-3 h-3 text-emerald-600" /> {areaDetails.responseTime} Express Arrival
+                      <span className="flex items-center gap-1 text-[11px] font-bold text-[#16a34a] bg-emerald-500/15 px-2.5 py-0.5 rounded-full shrink-0">
+                        <Clock className="w-3 h-3 text-[#16a34a]" /> {areaDetails.responseTime} Express Arrival
                       </span>
                     )}
                   </div>
 
                   <div className="flex items-baseline justify-between gap-2">
-                    <h4 className="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-1.5">
+                    <h4 className={`text-sm sm:text-base font-extrabold flex items-center gap-1.5 ${isLight ? "text-slate-900" : "text-white"}`}>
                       <MapPin className="w-4 h-4 text-kk-teal shrink-0" />
                       <span>{areaDetails.name}</span>
                     </h4>
                     {areaDetails.pincode && (
-                      <span className="text-xs font-bold text-slate-500 shrink-0">
+                      <span className="text-xs font-bold text-kk-teal shrink-0">
                         PIN {areaDetails.pincode}
                       </span>
                     )}
                   </div>
 
                   {areaDetails.landmarks && (
-                    <p className="text-xs text-slate-600 mt-1 pl-5.5 leading-relaxed">
+                    <p className={`text-xs mt-1 pl-5.5 leading-relaxed ${isLight ? "text-slate-600" : "text-slate-400"}`}>
                       {areaDetails.landmarks}
                     </p>
                   )}
@@ -408,8 +425,8 @@ export default function BookingModal({
 
               {/* Name (strictly no numbers) */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Your Name <span className="text-kk-red">*</span>
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${isLight ? "text-slate-700" : "text-slate-200"}`}>
+                  Your Name <span className="text-[#16a34a]">*</span>
                 </label>
                 <div className="relative">
                   <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -419,10 +436,12 @@ export default function BookingModal({
                     value={name}
                     onChange={handleNameChange}
                     placeholder="e.g. Rahul Sharma"
-                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 bg-slate-50 border rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 transition-all ${
+                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 border rounded-xl text-xs sm:text-sm transition-all focus:outline-none focus:ring-2 ${
                       nameError 
                         ? "border-red-400 focus:ring-red-400 bg-red-50/20" 
-                        : "border-slate-200 focus:ring-kk-teal focus:border-transparent"
+                        : isLight
+                          ? "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-kk-teal"
+                          : "bg-[#111116] border-white/15 text-white placeholder-slate-500 focus:bg-[#16161d] focus:ring-cyan-400"
                     }`}
                   />
                 </div>
@@ -437,10 +456,10 @@ export default function BookingModal({
               {/* Contact Number (digits only, strictly 10 digits) */}
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-                    Contact Number <span className="text-kk-red">*</span>
+                  <label className={`block text-xs font-bold uppercase tracking-wider ${isLight ? "text-slate-700" : "text-slate-200"}`}>
+                    Contact Number <span className="text-[#16a34a]">*</span>
                   </label>
-                  <span className={`text-[11px] font-mono ${phone.length === 10 ? "text-emerald-600 font-bold" : "text-slate-400"}`}>
+                  <span className={`text-[11px] font-mono ${phone.length === 10 ? "text-[#16a34a] font-bold" : "text-slate-400"}`}>
                     {phone.length}/10 digits
                   </span>
                 </div>
@@ -454,10 +473,12 @@ export default function BookingModal({
                     value={phone}
                     onChange={handlePhoneChange}
                     placeholder="10-digit mobile number"
-                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 bg-slate-50 border rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 transition-all ${
+                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 border rounded-xl text-xs sm:text-sm transition-all focus:outline-none focus:ring-2 ${
                       phoneError 
                         ? "border-red-400 focus:ring-red-400 bg-red-50/20" 
-                        : "border-slate-200 focus:ring-kk-teal focus:border-transparent"
+                        : isLight
+                          ? "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-kk-teal"
+                          : "bg-[#111116] border-white/15 text-white placeholder-slate-500 focus:bg-[#16161d] focus:ring-cyan-400"
                     }`}
                   />
                 </div>
@@ -471,18 +492,22 @@ export default function BookingModal({
 
               {/* Service Required Dropdown */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Service Required <span className="text-kk-red">*</span>
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${isLight ? "text-slate-700" : "text-slate-200"}`}>
+                  Service Required <span className="text-[#16a34a]">*</span>
                 </label>
                 <div className="relative">
                   <Wrench className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <select
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 sm:py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-kk-teal focus:border-transparent transition-all appearance-none cursor-pointer"
+                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 border rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 transition-all appearance-none cursor-pointer ${
+                      isLight
+                        ? "bg-slate-50 border-slate-200 text-slate-900 focus:bg-white focus:ring-kk-teal"
+                        : "bg-[#111116] border-white/15 text-white focus:bg-[#16161d] focus:ring-cyan-400"
+                    }`}
                   >
                     {serviceList.map((srv) => (
-                      <option key={srv} value={srv}>
+                      <option key={srv} value={srv} className={isLight ? "bg-white text-slate-900" : "bg-[#111116] text-white"}>
                         {srv}
                       </option>
                     ))}
@@ -492,8 +517,8 @@ export default function BookingModal({
 
               {/* Area Dropdown */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Select Area / Locality <span className="text-kk-red">*</span>
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${isLight ? "text-slate-700" : "text-slate-200"}`}>
+                  Select Area / Locality <span className="text-[#16a34a]">*</span>
                 </label>
                 <div className="relative">
                   <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -506,10 +531,14 @@ export default function BookingModal({
                         setAreaDetails(null);
                       }
                     }}
-                    className="w-full pl-10 pr-3.5 py-2.5 sm:py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-kk-teal focus:border-transparent transition-all appearance-none cursor-pointer"
+                    className={`w-full pl-10 pr-3.5 py-2.5 sm:py-3 border rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 transition-all appearance-none cursor-pointer ${
+                      isLight
+                        ? "bg-slate-50 border-slate-200 text-slate-900 focus:bg-white focus:ring-kk-teal"
+                        : "bg-[#111116] border-white/15 text-white focus:bg-[#16161d] focus:ring-cyan-400"
+                    }`}
                   >
                     {fullAreaList.map((ar) => (
-                      <option key={ar} value={ar}>
+                      <option key={ar} value={ar} className={isLight ? "bg-white text-slate-900" : "bg-[#111116] text-white"}>
                         {ar}
                       </option>
                     ))}
@@ -519,8 +548,8 @@ export default function BookingModal({
 
               {/* Optional Notes */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Issue / Appliance Details <span className="text-slate-400 font-normal lowercase">(optional)</span>
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${isLight ? "text-slate-700" : "text-slate-200"}`}>
+                  Issue / Appliance Details <span className="opacity-60 font-normal lowercase">(optional)</span>
                 </label>
                 <div className="relative">
                   <FileText className="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none" />
@@ -529,30 +558,36 @@ export default function BookingModal({
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="e.g. AC cooling issue or water leakage"
-                    className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-kk-teal focus:border-transparent transition-all resize-none"
+                    className={`w-full pl-10 pr-3.5 py-2.5 border rounded-xl text-xs sm:text-sm transition-all resize-none focus:outline-none focus:ring-2 ${
+                      isLight
+                        ? "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-kk-teal"
+                        : "bg-[#111116] border-white/15 text-white placeholder-slate-500 focus:bg-[#16161d] focus:ring-cyan-400"
+                    }`}
                   />
                 </div>
               </div>
 
               {/* Trust Badge */}
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-[11px] text-slate-600 border border-slate-100">
+              <div className={`flex items-center gap-2 p-2.5 rounded-xl text-[11px] border ${
+                isLight ? "bg-slate-50 text-slate-600 border-slate-100" : "bg-[#111116] text-slate-300 border-white/10"
+              }`}>
                 <ShieldCheck className="w-4 h-4 text-kk-teal shrink-0" />
                 <span>No advance payment needed • Pay only after inspection</span>
               </div>
 
-              {/* WhatsApp Submit Button without number in text */}
+              {/* WhatsApp Submit Button */}
               <div className="pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 px-5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 active:scale-98 cursor-pointer disabled:opacity-75"
+                  className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-kk-teal to-[#16a34a] hover:opacity-95 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 active:scale-98 cursor-pointer disabled:opacity-75"
                 >
                   <MessageCircle className="w-5 h-5 fill-current" />
                   <span>Send Booking to WhatsApp</span>
                   <Send className="w-4 h-4 ml-1" />
                 </button>
-                <p className="text-[11px] text-center text-slate-400 mt-2">
-                  Opens WhatsApp with pre-filled details to send directly to KK Multi Services
+                <p className={`text-[11px] text-center mt-2 ${isLight ? "text-slate-400" : "text-slate-500"}`}>
+                  Opens WhatsApp with pre-filled details to send directly to Dial For Services
                 </p>
               </div>
             </form>

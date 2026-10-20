@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Caveat } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { BookingModalProvider } from "@/context/BookingModalContext";
 
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "KK Multi Services | Professional AC & Appliance Repair",
+  title: "Dial For Services | Professional AC & Appliance Repair",
   description: "Expert AC, Refrigerator, Washing Machine, Microwave Repair, Installation, and Maintenance services. Reliable, fast, and affordable solutions for your home and business.",
+  icons: {
+    icon: "/new_imgs/favicon.png",
+    shortcut: "/new_imgs/favicon.png",
+    apple: "/new_imgs/favicon.png",
+  },
   openGraph: {
-    title: "KK Multi Services | Professional Home Appliance Services",
+    title: "Dial For Services | Professional Home Appliance Services",
     description: "Expert AC, Refrigerator, and Appliance Repair, Installation, and Maintenance services.",
     type: "website",
   }
@@ -30,17 +32,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${caveat.variable} scroll-smooth antialiased`} data-theme="current" suppressHydrationWarning>
+    <html lang="en" className={`${plusJakartaSans.variable} scroll-smooth antialiased dark`} data-theme="dark" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  var t = localStorage.getItem('kk_theme');
-                  if (t === 'logo') t = 'light';
-                  if (t === 'light' || t === 'current') {
-                    document.documentElement.setAttribute('data-theme', t);
+                  var t = localStorage.getItem('dfs_theme') || localStorage.getItem('kk_theme');
+                  var resolved = (t === 'light' || t === 'logo') ? 'light' : 'dark';
+                  document.documentElement.setAttribute('data-theme', resolved);
+                  if (resolved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
               })();

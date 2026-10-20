@@ -43,7 +43,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50 font-sans flex flex-col justify-between">
+    <main className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white font-sans flex flex-col justify-between">
       <div>
         <TopBar />
         <Navbar />
@@ -56,7 +56,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/contact_page_background_img.png"
-              alt="KK Multi Services Office & Customer Support"
+              alt="Dial For Services Office & Customer Support"
               fill
               priority
               sizes="100vw"
@@ -72,7 +72,7 @@ export default function ContactPage() {
             <div className="relative w-full h-full animate-contact-float">
               <Image
                 src="/images/contact.png"
-                alt="Customer calling KK Multi Services support technician"
+                alt="Customer calling Dial For Services support technician"
                 fill
                 priority
                 sizes="100vw"
@@ -149,10 +149,10 @@ export default function ContactPage() {
               <h3 className="text-sm sm:text-base font-bold text-slate-900 mt-0.5 mb-1">Service Inquiries</h3>
               <p className="text-xs text-slate-500 mb-2.5">For commercial AMC contracts and corporate servicing.</p>
               <a
-                href="mailto:support@kkmulti.com"
+                href="mailto:support@dialforservices.com"
                 className="inline-flex items-center gap-1.5 text-xs font-extrabold text-slate-800 group-hover:text-kk-teal transition-colors"
               >
-                support@kkmulti.com <ChevronRight className="w-3.5 h-3.5" />
+                support@dialforservices.com <ChevronRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
@@ -215,7 +215,7 @@ export default function ContactPage() {
                   href="tel:+917823038645"
                   className="w-full py-3 bg-white hover:bg-slate-100 text-kk-blue rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-sm active:scale-95"
                 >
-                  <Phone className="w-4 h-4 text-kk-red" /> Call Direct: +91 78230 38645
+                  <Phone className="w-4 h-4 text-emerald-500" /> Call Direct: +91 78230 38645
                 </a>
               </div>
             </div>
@@ -242,11 +242,11 @@ export default function ContactPage() {
                     <ChevronRight className="w-4 h-4" />
                   </a>
                   <a
-                    href="mailto:support@kkmulti.com"
+                    href="mailto:support@dialforservices.com"
                     className="w-full py-3 px-4 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-between transition-colors border border-slate-200"
                   >
                     <span className="flex items-center gap-2.5">
-                      <Mail className="w-4 h-4 text-kk-teal shrink-0" /> Email: support@kkmulti.com
+                      <Mail className="w-4 h-4 text-kk-teal shrink-0" /> Email: support@dialforservices.com
                     </span>
                     <ChevronRight className="w-4 h-4" />
                   </a>
@@ -259,7 +259,7 @@ export default function ContactPage() {
             </div>
 
             {/* Online Service Enquiry Card */}
-            <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg shadow-teal-900/5 border border-teal-200/80 flex flex-col justify-between">
+            <div className="bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-950/20 dark:to-emerald-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg shadow-teal-900/5 border border-teal-200/80 dark:border-white/10 flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kk-teal/15 text-kk-teal text-xs font-bold uppercase tracking-wider mb-3">
                   <Calendar className="w-3.5 h-3.5" /> Online Booking
@@ -323,19 +323,20 @@ export default function ContactPage() {
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title="Dial For Services Location"
               ></iframe>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-10 sm:py-14 bg-white border-t border-slate-200">
+        <section className="py-10 sm:py-14 bg-white dark:bg-black border-t border-slate-200 dark:border-white/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-10">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kk-teal/10 text-kk-teal text-xs font-bold mb-2 uppercase tracking-wider">
                 <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
               </div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-kk-blue">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-kk-blue dark:text-cyan-400">
                 Common Questions Before Booking
               </h2>
             </div>
@@ -346,13 +347,13 @@ export default function ContactPage() {
                 return (
                   <div
                     key={index}
-                    className="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-200"
+                    className="border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden transition-all duration-200"
                   >
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 bg-slate-50/60 hover:bg-slate-50 transition-colors"
+                      className="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 bg-slate-50/60 dark:bg-[#0a0a0d] hover:bg-slate-50 dark:hover:bg-[#121217] transition-colors"
                     >
-                      <span className="font-bold text-slate-800 text-xs sm:text-base">{faq.q}</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-base">{faq.q}</span>
                       <ChevronDown
                         className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
                           isOpen ? "rotate-180 text-kk-teal" : ""
@@ -360,7 +361,7 @@ export default function ContactPage() {
                       />
                     </button>
                     {isOpen && (
-                      <div className="p-4 sm:p-5 pt-0 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="p-4 sm:p-5 pt-0 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-100 dark:border-white/10 bg-white dark:bg-[#0a0a0d]">
                         {faq.a}
                       </div>
                     )}

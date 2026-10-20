@@ -10,12 +10,12 @@ export default function Logo({ className }: { className?: string }) {
 
   return (
     <div className={`flex items-center select-none theme-logo-wrapper transition-all duration-300 ${className || ''}`}>
-      <div className="relative w-44 sm:w-48 h-12 sm:h-14">
+      <div className="relative w-44 sm:w-52 md:w-56 h-12 sm:h-14">
         <Image
-          src={isLight ? "/images/logo_Light_01.png" : "/images/Logo_02.png"}
-          alt="KK Multi Services"
+          src="/new_imgs/logo.png"
+          alt="Dial For Services"
           fill
-          className="object-contain object-left"
+          className={`object-contain object-left transition-all duration-300 ${!isLight ? 'drop-shadow-[0_2px_12px_rgba(255,255,255,0.45)]' : ''}`}
           priority
         />
       </div>

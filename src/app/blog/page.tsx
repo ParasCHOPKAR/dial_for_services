@@ -41,7 +41,7 @@ export default function BlogPage() {
   ];
 
   return (
-    <main id="top" className="min-h-screen font-sans bg-slate-50 text-slate-900 flex flex-col selection:bg-kk-teal selection:text-white">
+    <main id="top" className="min-h-screen font-sans bg-white dark:bg-black text-slate-900 dark:text-white flex flex-col selection:bg-kk-teal selection:text-white">
       {/* Top Header Bar */}
       <TopBar />
 
@@ -115,7 +115,7 @@ export default function BlogPage() {
                   href="tel:+917823038645"
                   className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-kk-blue hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 shadow-md hover:-translate-y-0.5 text-center"
                 >
-                  <Phone className="w-3.5 h-3.5 text-kk-red" />
+                  <Phone className="w-3.5 h-3.5 text-kk-teal" />
                   <span>Call: +91 78230 38645</span>
                 </a>
               </div>
@@ -173,16 +173,16 @@ export default function BlogPage() {
       </section>
 
       {/* Upcoming Topics Preview Section */}
-      <section className="py-14 sm:py-16 bg-white border-b border-slate-200/90">
+      <section className="py-14 sm:py-16 bg-white dark:bg-black border-b border-slate-200/90 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200/80 text-kk-teal text-xs font-black uppercase tracking-wider mb-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/40 border border-teal-200/80 dark:border-teal-800/40 text-kk-teal text-xs font-black uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5 text-kk-teal" /> What to expect
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-kk-blue tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-kk-blue dark:text-cyan-400 tracking-tight">
               Topics We Are Preparing For You
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
               Insightful DIY advice, maintenance schedules, and warning signals direct from Pune&apos;s leading technicians.
             </p>
           </div>
@@ -191,14 +191,14 @@ export default function BlogPage() {
             {upcomingTopics.map((topic, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-kk-teal/40 hover:shadow-md transition-all duration-300 flex items-start gap-4 group"
+                className="bg-slate-50 dark:bg-[#0a0a0d] hover:bg-white dark:hover:bg-[#121217] rounded-2xl p-5 border border-slate-200/80 dark:border-white/10 hover:border-kk-teal/40 hover:shadow-md transition-all duration-300 flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-teal-50 border border-slate-200 group-hover:border-teal-200 text-xl flex items-center justify-center shrink-0 shadow-xs transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white dark:bg-black group-hover:bg-teal-50 dark:group-hover:bg-teal-950/30 border border-slate-200 dark:border-white/10 group-hover:border-teal-200 text-xl flex items-center justify-center shrink-0 shadow-xs transition-colors">
                   {topic.icon}
                 </div>
                 <div>
                   <span className="text-[11px] font-bold text-kk-teal uppercase tracking-wider">Upcoming Article</span>
-                  <h3 className="text-sm font-bold text-slate-900 leading-snug mt-0.5 group-hover:text-kk-blue transition-colors">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug mt-0.5 group-hover:text-kk-blue dark:group-hover:text-cyan-300 transition-colors">
                     {topic.title}
                   </h3>
                 </div>
@@ -209,7 +209,7 @@ export default function BlogPage() {
       </section>
 
       {/* Need Urgent Appliance Repair Banner */}
-      <section className="py-12 bg-slate-900 text-white">
+      <section className="py-12 bg-slate-900 dark:bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="space-y-1">
             <div className="flex items-center justify-center md:justify-start gap-2 text-kk-teal text-xs font-bold uppercase tracking-wider">

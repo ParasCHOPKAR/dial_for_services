@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const bookingId = `KK-${Math.floor(100000 + Math.random() * 900000)}`;
+    const bookingId = `DFS-${Math.floor(100000 + Math.random() * 900000)}`;
     const receivedAt = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
 
     // Server-side logging for the booking dispatch team

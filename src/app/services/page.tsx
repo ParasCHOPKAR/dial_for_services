@@ -93,7 +93,7 @@ const servicesList: ServiceItem[] = [
     category: "ac",
     title: "Central HVAC Plant & Ductable AC Systems",
     tag: "Industrial & Centralized",
-    tagColor: "bg-amber-600 text-white",
+    tagColor: "bg-kk-blue text-white",
     image: "/images/services/hvac_system.jpg",
     shortDesc: "Industrial HVAC plant maintenance, Air Handling Units (AHU), water/air-cooled chillers, cooling towers, and package ductable AC installations.",
     issues: [
@@ -178,7 +178,7 @@ const servicesList: ServiceItem[] = [
     category: "microwave",
     title: "Microwave Oven Repair",
     tag: "Same Day Visit",
-    tagColor: "bg-amber-500 text-white",
+    tagColor: "bg-kk-teal text-white",
     image: "/images/appliance_microwave_1789636624228.jpg",
     shortDesc: "Safe and certified diagnosis for solo, grill, and convection microwaves. Magnetron and touch-panel replacement.",
     issues: [
@@ -227,7 +227,7 @@ const brandLogos = [
 
 const faqs = [
   {
-    q: "How does KK Multi Services pricing work?",
+    q: "How does Dial For Services pricing work?",
     a: "We believe in 100% transparent pricing. Our certified technician diagnoses your appliance on-site and provides an upfront, honest quote before beginning any repair work. When you approve the service estimate, the inspection charge is waived! You only pay for the repair and genuine replacement parts."
   },
   {
@@ -269,7 +269,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <main id="top" className="min-h-screen font-sans bg-slate-50 text-slate-900 flex flex-col">
+    <main id="top" className="min-h-screen font-sans bg-white dark:bg-black text-slate-900 dark:text-white flex flex-col">
       {/* Top Header Bar */}
       <TopBar />
 
@@ -278,22 +278,22 @@ export default function ServicesPage() {
 
       {/* Hero Header - 16:4 Aspect Ratio (referencing areas hero) */}
       <section 
-        className="relative w-full aspect-[16/7] xs:aspect-[16/6] sm:aspect-[16/5] lg:aspect-[16/4] min-h-[440px] md:min-h-[380px] lg:min-h-0 flex items-center overflow-hidden border-b border-slate-200 bg-white"
+        className="relative w-full aspect-[16/7] xs:aspect-[16/6] sm:aspect-[16/5] lg:aspect-[16/4] min-h-[440px] md:min-h-[380px] lg:min-h-0 flex items-center overflow-hidden border-b border-slate-200 dark:border-white/10 bg-white dark:bg-black"
         style={{ aspectRatio: "16 / 4" }}
       >
         {/* Background Image: hero_bg_01.png */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/services/hero_bg_01.png"
-            alt="KK Multi Services Air Conditioning and Appliance Repair"
+            alt="Dial For Services Air Conditioning and Appliance Repair"
             fill
             priority
             sizes="100vw"
             className="object-cover object-right md:object-center select-none"
           />
           {/* Left side background shadow till the text - rich contrast matching reference */}
-          <div className="absolute inset-y-0 left-0 w-full sm:w-[60%] lg:w-[50%] xl:w-[48%] bg-gradient-to-r from-white via-white/95 via-white/80 to-transparent pointer-events-none z-[1]" />
-          <div className="absolute inset-y-0 left-0 w-80 sm:w-[45%] bg-white/70 blur-3xl pointer-events-none z-[1]" />
+          <div className="absolute inset-y-0 left-0 w-full sm:w-[60%] lg:w-[50%] xl:w-[48%] bg-gradient-to-r from-white dark:from-black via-white/95 dark:via-black/95 via-white/80 dark:via-black/80 to-transparent pointer-events-none z-[1]" />
+          <div className="absolute inset-y-0 left-0 w-80 sm:w-[45%] bg-white/70 dark:bg-black/70 blur-3xl pointer-events-none z-[1]" />
         </div>
 
         {/* Content Container (Left Column matching areas page grid) */}
@@ -305,18 +305,18 @@ export default function ServicesPage() {
               <div className="flex items-center gap-1.5 text-xs font-semibold mb-1.5 sm:mb-2">
                 <Link href="/" className="text-[#0084ff] hover:underline">Home</Link>
                 <span className="text-slate-400 font-normal">&gt;</span>
-                <span className="text-slate-500">Services</span>
+                <span className="text-slate-500 dark:text-slate-400">Services</span>
               </div>
 
               {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sky-50 border border-sky-200 text-slate-800 text-[11px] sm:text-xs font-bold mb-1.5 sm:mb-2 shadow-xs">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/40 text-slate-800 dark:text-slate-200 text-[11px] sm:text-xs font-bold mb-1.5 sm:mb-2 shadow-xs">
                 <Settings className="w-3.5 h-3.5 text-[#0084ff]" />
                 <span>Multi-Brand Certified AC &amp; Appliance Repair</span>
               </div>
 
               {/* Heading */}
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[28px] xl:text-[34px] font-black tracking-tight leading-[1.12] mb-1.5 sm:mb-2 drop-shadow-xs">
-                <span className="text-[#0B1E3F] block">Expert Home Appliance &amp;</span>
+                <span className="text-[#0B1E3F] dark:text-white block">Expert Home Appliance &amp;</span>
                 <span className="text-[#0084ff] block">Cooling AC Solutions</span>
               </h1>
 
@@ -347,46 +347,46 @@ export default function ServicesPage() {
               {/* 4 Metric Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 max-w-xl">
                 {/* Card 1 */}
-                <div className="bg-white/95 rounded-xl p-1.5 sm:p-2 border border-slate-100 shadow-md shadow-slate-900/5 flex items-center gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-sky-100/90 flex items-center justify-center shrink-0">
+                <div className="bg-white/95 dark:bg-[#0a0a0d] rounded-xl p-1.5 sm:p-2 border border-slate-100 dark:border-white/10 shadow-md shadow-slate-900/5 flex items-center gap-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-sky-100/90 dark:bg-sky-950/60 flex items-center justify-center shrink-0">
                     <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0084ff]" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">90 Mins</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-tight">Doorstep Response</div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white leading-tight">90 Mins</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-tight">Doorstep Response</div>
                   </div>
                 </div>
 
                 {/* Card 2 */}
-                <div className="bg-white/95 rounded-xl p-1.5 sm:p-2 border border-slate-100 shadow-md shadow-slate-900/5 flex items-center gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-100/90 flex items-center justify-center shrink-0">
+                <div className="bg-white/95 dark:bg-[#0a0a0d] rounded-xl p-1.5 sm:p-2 border border-slate-100 dark:border-white/10 shadow-md shadow-slate-900/5 flex items-center gap-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-100/90 dark:bg-emerald-950/60 flex items-center justify-center shrink-0">
                     <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">90 Days</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-tight">Service Warranty</div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white leading-tight">90 Days</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-tight">Service Warranty</div>
                   </div>
                 </div>
 
                 {/* Card 3 */}
-                <div className="bg-white/95 rounded-xl p-1.5 sm:p-2 border border-slate-100 shadow-md shadow-slate-900/5 flex items-center gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-orange-100/90 flex items-center justify-center shrink-0">
-                    <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-600" />
+                <div className="bg-white/95 dark:bg-[#0a0a0d] rounded-xl p-1.5 sm:p-2 border border-slate-100 dark:border-white/10 shadow-md shadow-slate-900/5 flex items-center gap-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-kk-teal/15 dark:bg-teal-950/60 flex items-center justify-center shrink-0">
+                    <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-kk-teal" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">5,000+</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-tight">Appliances Fixed</div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white leading-tight">5,000+</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-tight">Appliances Fixed</div>
                   </div>
                 </div>
 
                 {/* Card 4 */}
-                <div className="bg-white/95 rounded-xl p-1.5 sm:p-2 border border-slate-100 shadow-md shadow-slate-900/5 flex items-center gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-purple-100/90 flex items-center justify-center shrink-0">
-                    <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600" />
+                <div className="bg-white/95 dark:bg-[#0a0a0d] rounded-xl p-1.5 sm:p-2 border border-slate-100 dark:border-white/10 shadow-md shadow-slate-900/5 flex items-center gap-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-kk-blue/15 dark:bg-blue-950/60 flex items-center justify-center shrink-0">
+                    <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-kk-blue dark:text-cyan-400" />
                   </div>
                   <div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">100%</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 font-medium leading-tight">Genuine Parts</div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white leading-tight">100%</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-tight">Genuine Parts</div>
                   </div>
                 </div>
               </div>
@@ -399,7 +399,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Filter Tabs */}
-      <section id="services-grid" className="py-8 bg-white border-b border-slate-200 sticky top-[68px] md:top-[76px] z-40 shadow-sm backdrop-blur-md bg-white/95">
+      <section id="services-grid" className="py-8 bg-white/95 dark:bg-black/95 border-b border-slate-200 dark:border-white/10 sticky top-[68px] md:top-[76px] z-40 shadow-sm backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {[
@@ -416,7 +416,7 @@ export default function ServicesPage() {
                 className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === tab.id
                     ? "bg-kk-blue text-white shadow-md shadow-kk-blue/20"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900"
+                    : "bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
                 {tab.label}
@@ -433,7 +433,7 @@ export default function ServicesPage() {
             <div 
               key={service.id}
               id={service.id}
-              className="bg-white rounded-3xl border border-slate-200/80 shadow-lg shadow-slate-900/5 hover:shadow-2xl hover:border-kk-teal/30 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col group scroll-mt-36"
+              className="bg-white dark:bg-[#0a0a0d] rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-lg shadow-slate-900/5 hover:shadow-2xl hover:border-kk-teal/30 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col group scroll-mt-36"
             >
               {/* Image & Badge */}
               <div className="relative w-full h-56 bg-slate-100 overflow-hidden flex items-center justify-center border-b border-slate-100">
@@ -455,23 +455,23 @@ export default function ServicesPage() {
               {/* Body */}
               <div className="p-6 sm:p-7 flex flex-col flex-grow">
                 <div className="flex items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-kk-blue transition-colors">
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-kk-blue dark:group-hover:text-cyan-400 transition-colors">
                     {service.title}
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-500 mb-5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-5 leading-relaxed">
                   {service.shortDesc}
                 </p>
 
                 {/* Common Issues Checklist */}
-                <div className="mb-6 bg-slate-50/80 rounded-2xl p-4 border border-slate-100">
-                  <span className="text-[11px] font-black uppercase tracking-wider text-slate-500 block mb-2.5">
+                <div className="mb-6 bg-slate-50/80 dark:bg-black/40 rounded-2xl p-4 border border-slate-100 dark:border-white/5">
+                  <span className="text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2.5">
                     Common Problems Fixed:
                   </span>
                   <ul className="space-y-1.5">
                     {service.issues.map((issue, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                      <li key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
                         <CheckCircle2 className="w-3.5 h-3.5 text-kk-teal shrink-0 mt-0.5" />
                         <span>{issue}</span>
                       </li>
@@ -482,23 +482,23 @@ export default function ServicesPage() {
                 {/* Features Pills */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {service.features.map((feat, i) => (
-                    <span key={i} className="px-2.5 py-1 rounded-md bg-kk-teal/5 text-kk-teal text-[11px] font-bold border border-kk-teal/15">
+                    <span key={i} className="px-2.5 py-1 rounded-md bg-kk-teal/5 dark:bg-teal-950/40 text-kk-teal text-[11px] font-bold border border-kk-teal/15 dark:border-teal-800/40">
                       {feat}
                     </span>
                   ))}
                 </div>
 
                 {/* Guarantee & Action CTA */}
-                <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck className="w-4 h-4 text-kk-teal shrink-0" />
-                    <span className="text-xs font-bold text-slate-700">90-Day Warranty</span>
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300">90-Day Warranty</span>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <a 
                       href="tel:+917823038645"
-                      className="p-2.5 sm:p-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-kk-blue transition-colors"
+                      className="p-2.5 sm:p-3 rounded-xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-700 dark:text-slate-200 hover:text-kk-blue dark:hover:text-cyan-400 transition-colors"
                       aria-label={`Call for ${service.title}`}
                       title="Call Specialist"
                     >
@@ -520,12 +520,12 @@ export default function ServicesPage() {
       </section>
 
       {/* Multi-Brand Compatibility */}
-      <section className="py-14 sm:py-16 bg-slate-50/70 border-y border-slate-200">
+      <section className="py-14 sm:py-16 bg-slate-50/70 dark:bg-black border-y border-slate-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-kk-teal block mb-2">
             Multi-Brand Compatibility
           </span>
-          <h3 className="text-2xl sm:text-3xl font-black text-kk-blue tracking-tight mb-8 sm:mb-10">
+          <h3 className="text-2xl sm:text-3xl font-black text-kk-blue dark:text-white tracking-tight mb-8 sm:mb-10">
             Certified Repair Across All Leading Appliance Brands
           </h3>
 
@@ -533,7 +533,7 @@ export default function ServicesPage() {
             {brandLogos.map((brand) => (
               <div 
                 key={brand.name}
-                className="h-16 sm:h-20 w-32 sm:w-40 px-3.5 sm:px-4 py-2 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:shadow-md hover:border-kk-teal/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+                className="h-16 sm:h-20 w-32 sm:w-40 px-3.5 sm:px-4 py-2 rounded-2xl bg-white dark:bg-white/95 border border-slate-200/90 dark:border-white/10 shadow-xs hover:shadow-md hover:border-kk-teal/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
                 title={brand.name}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
@@ -557,10 +557,10 @@ export default function ServicesPage() {
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kk-teal/10 text-kk-teal text-xs font-bold mb-3 uppercase tracking-wider">
             <Zap className="w-3.5 h-3.5" /> How It Works
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-kk-blue tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-kk-blue dark:text-white tracking-tight">
             Our 4-Step Express Service
           </h2>
-          <p className="text-sm text-slate-500 mt-3">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">
             Getting your appliance repaired has never been this seamless and reliable.
           </p>
         </div>
@@ -588,10 +588,10 @@ export default function ServicesPage() {
               desc: "Full functional testing before payment, accompanied by a 90-day warranty card."
             }
           ].map((item, idx) => (
-            <div key={idx} className="bg-white rounded-3xl p-6 border border-slate-100 shadow-xl shadow-slate-900/5 relative">
-              <span className="text-4xl font-black text-slate-200 block mb-4">{item.step}</span>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+            <div key={idx} className="bg-white dark:bg-[#0a0a0d] rounded-3xl p-6 border border-slate-100 dark:border-white/10 shadow-xl shadow-slate-900/5 relative">
+              <span className="text-4xl font-black text-slate-200 dark:text-white/20 block mb-4">{item.step}</span>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -599,12 +599,12 @@ export default function ServicesPage() {
 
       {/* Emergency CTA Banner */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="bg-gradient-to-r from-kk-blue via-kk-blue-light to-kk-dark text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10">
+        <div className="bg-gradient-to-r from-kk-blue via-kk-blue-light to-kk-dark dark:from-[#030d22] dark:via-black dark:to-black text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10">
           <div className="absolute top-0 right-0 w-80 h-80 bg-kk-teal/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="relative z-10 max-w-xl">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kk-red/20 text-kk-red-light border border-kk-red/30 text-xs font-bold mb-4 uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-kk-red animate-ping"></span> Urgent Breakdown
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold mb-4 uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Urgent Breakdown
             </span>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3">
               Need Appliance Repair Right Now?
@@ -617,7 +617,7 @@ export default function ServicesPage() {
           <div className="relative z-10 flex flex-col sm:flex-row gap-3.5 shrink-0 w-full md:w-auto">
             <a 
               href="tel:+917823038645"
-              className="px-6 py-4 rounded-xl bg-kk-red hover:bg-kk-red-light text-white font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2"
+              className="px-6 py-4 rounded-xl bg-gradient-to-r from-kk-teal to-emerald-500 hover:brightness-110 text-white font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4" /> Call Hotline: +91 78230 38645
             </a>
@@ -634,13 +634,13 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white border-t border-slate-200">
+      <section className="py-16 bg-white dark:bg-black border-t border-slate-200 dark:border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kk-teal/10 text-kk-teal text-xs font-bold mb-3 uppercase tracking-wider">
               <HelpCircle className="w-3.5 h-3.5" /> Services FAQ
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-kk-blue">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-kk-blue dark:text-white">
               Frequently Asked Questions About Repairs
             </h3>
           </div>
@@ -649,18 +649,18 @@ export default function ServicesPage() {
             {faqs.map((faq, idx) => (
               <div 
                 key={idx} 
-                className="bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm"
+                className="bg-slate-50 dark:bg-[#0a0a0d] rounded-2xl border border-slate-200/80 dark:border-white/10 overflow-hidden shadow-sm"
               >
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-5 text-left font-bold text-slate-800 flex justify-between items-center gap-4 hover:text-kk-blue transition-colors"
+                  className="w-full px-6 py-5 text-left font-bold text-slate-800 dark:text-white flex justify-between items-center gap-4 hover:text-kk-blue dark:hover:text-cyan-400 transition-colors"
                 >
                   <span className="text-sm sm:text-base">{faq.q}</span>
                   <ChevronDown className={`w-5 h-5 text-kk-teal shrink-0 transition-transform duration-200 ${openFaq === idx ? "rotate-180" : ""}`} />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white">
+                  <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-white/10 bg-white dark:bg-[#0a0a0d]">
                     {faq.a}
                   </div>
                 )}

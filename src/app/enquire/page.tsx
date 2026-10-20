@@ -91,11 +91,11 @@ export default function EnquirePage() {
 
     setIsSubmitting(true);
 
-    const generatedId = `KK-${Math.floor(100000 + Math.random() * 900000)}`;
+    const generatedId = `DFS-${Math.floor(100000 + Math.random() * 900000)}`;
     setBookingId(generatedId);
 
     const lines = [
-      `*New Service Enquiry - KK Multi Services*`,
+      `*New Service Enquiry - Dial For Services*`,
       ``,
       `👤 *Name:* ${formData.name.trim()}`,
       `📞 *Contact Number:* ${formData.phone.trim()}`,
@@ -138,7 +138,7 @@ export default function EnquirePage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 font-sans flex flex-col justify-between">
+    <main className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white font-sans flex flex-col justify-between">
       {/* Top Bar & Navigation */}
       <div>
         <TopBar />
@@ -148,7 +148,7 @@ export default function EnquirePage() {
         <section className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
           
           {/* Card Container */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl p-5 xs:p-7 sm:p-10 shadow-xl shadow-slate-900/5 border border-slate-200/80">
+          <div className="bg-white dark:bg-[#0a0a0d] rounded-2xl sm:rounded-3xl p-5 xs:p-7 sm:p-10 shadow-xl shadow-slate-900/5 border border-slate-200/80 dark:border-white/10">
             
             {/* Header */}
             <div className="mb-6 sm:mb-8 text-center sm:text-left">
@@ -175,7 +175,7 @@ export default function EnquirePage() {
                 <p className="text-emerald-800 text-xs sm:text-sm max-w-md mx-auto mb-4 leading-relaxed">
                   Thank you, <span className="font-bold">{formData.name || "Customer"}</span>! Your service enquiry has been assigned Reference ID{" "}
                   <strong className="bg-emerald-200/80 text-emerald-950 px-2 py-0.5 rounded font-mono">
-                    #{bookingId || "KK-SERVICE"}
+                    #{bookingId || "DFS-SERVICE"}
                   </strong>.
                 </p>
                 {lastWaUrl && (
@@ -372,7 +372,7 @@ export default function EnquirePage() {
                 </div>
 
                 {/* Guarantee Banner */}
-                <div className="flex items-start xs:items-center gap-2.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600">
+                <div className="flex items-start xs:items-center gap-2.5 p-3.5 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200/80 dark:border-white/10 text-xs text-slate-600 dark:text-slate-300">
                   <ShieldCheck className="w-4 h-4 text-kk-teal shrink-0 mt-0.5 xs:mt-0" />
                   <span>No advance payment required. Full inspection and functional testing before payment.</span>
                 </div>
