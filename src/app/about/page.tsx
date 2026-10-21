@@ -911,6 +911,12 @@ export default function AboutPage() {
               href="/enquire"
               className="w-full py-4 px-6 rounded-2xl bg-kk-teal hover:bg-kk-teal-light text-white font-bold text-sm shadow-lg shadow-kk-teal/25 flex items-center justify-center gap-2.5 transition-all hover:-translate-y-0.5"
             >
+
+              {/* Right Action Panel (4 Cols) */}
+
+
+
+
               <span>Book Service Online</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
